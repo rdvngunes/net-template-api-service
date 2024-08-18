@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TemplateApiService.Common.Enums;
 using TemplateApiService.Common.RestClient;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using HttpResponse = Jal.HttpClient.Model.HttpResponse;
+using TemplateApiService.Common.Enums;
 
 namespace TemplateApiService.Common.Extensions
 {

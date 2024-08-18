@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TemplateApiService.Common.Enums;
 using TemplateApiService.Common.RedisDbClient;
 using TemplateApiService.Common.RestClient;
 using TemplateApiService.Common.Security;
@@ -13,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TemplateApiService.Common.Enums;
 
 namespace TemplateApiService.BusinessObject.UsersBO
 {

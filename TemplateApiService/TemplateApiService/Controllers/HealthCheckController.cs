@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using TemplateApiService.Common;
-using TemplateApiService.Common.Enums;
 using TemplateApiService.Common.RestClient;
 using TemplateApiService.ViewModels.HealthCheck;
 using System;
@@ -16,6 +15,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using TemplateApiService.Common.Enums;
 
 namespace TemplateApiService.Controllers
 {

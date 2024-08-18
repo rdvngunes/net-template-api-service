@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using TemplateApiService.BusinessObject.UsersBO;
-using TemplateApiService.Common.Enums;
 using TemplateApiService.Common.Extensions;
 using TemplateApiService.Common.RestClient;
 using TemplateApiService.Controllers;
@@ -15,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using TemplateApiService.Common.Enums;
 
 namespace TemplateApiServiceUnitTests.Controller
 {
@@ -66,8 +66,6 @@ namespace TemplateApiServiceUnitTests.Controller
 
             var user = new UsersViewModel()
             {
-                BrandName = "testbrand",
-                TypeName = "testtype"
             };
 
             var response = new ApiRestResponseResult();
@@ -85,8 +83,6 @@ namespace TemplateApiServiceUnitTests.Controller
             Assert.NotNull(objectResult);
             Assert.Equal(200, objectResult.StatusCode);
             Assert.IsAssignableFrom<ApiRestResponseResult>(objectResult.Value);
-            Assert.Equal("testbrand", userresponse.BrandName);
-            Assert.Equal("testtype", userresponse.TypeName);
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using TemplateApiService.Common.Enums;
+﻿
 using TemplateApiService.Common.RedisDbClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using TemplateApiService.Common.Enums;
 
 namespace TemplateApiService.Common.RestClient
 {

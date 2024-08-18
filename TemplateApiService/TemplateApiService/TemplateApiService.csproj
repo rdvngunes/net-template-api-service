@@ -43,6 +43,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Common\Enums\" />
 	  <Folder Include="logs\" />
 	</ItemGroup>
 

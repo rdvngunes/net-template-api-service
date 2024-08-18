@@ -1,0 +1,992 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TemplateApiService</name>
+    </assembly>
+    <members>
+        <member name="M:TemplateApiService.BusinessObject.UserBO.UserBO.#ctor(Microsoft.Extensions.Logging.ILogger{TemplateApiService.BusinessObject.UserBO.UserBO},TemplateApiService.Data.IDbRepository{TemplateApiService.Models.UserBrandMasters.UserBrandMaster},TemplateApiService.Data.IDbRepository{TemplateApiService.Models.UserTypeMasters.UserTypeMaster})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userRepository"></param>
+            <param name="logger"></param>
+            <param name="authorizationClaimsProvider"></param>
+            <param name="languageTranslationHelper"></param>
+            <param name="userValidator"></param>
+            <param name="errorResponseHelper"></param>
+            <param name="userBrandMasterRepository"></param>
+            <param name="userTypeMasterRepository"></param>
+            <param name="databaseFunctions"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.UserBO.UserBO.GetUserListing">
+            <summary>
+            Get user data listing
+            </summary>
+            <param name="query">Query parameters for user data filter</param>
+            <returns>Returns list of users.</returns>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.UsersBO.UsersBO.#ctor(TemplateApiService.Data.IDbRepository{TemplateApiService.Models.Users.User},Microsoft.Extensions.Logging.ILogger{TemplateApiService.BusinessObject.UsersBO.UsersBO},TemplateApiService.Data.IDbRepository{TemplateApiService.Models.UserBrandMasters.UserBrandMaster},TemplateApiService.Data.IDbRepository{TemplateApiService.Models.UserTypeMasters.UserTypeMaster},TemplateApiService.Common.RestClient.ErrorResponseHelper,TemplateApiService.Common.RedisDbClient.LanguageTranslationHelper,TemplateApiService.Common.Security.AuthorizationClaimsProvider,TemplateApiService.Common.User.UserClient,TemplateApiService.Common.Operation.OperationClient)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userRepository"></param>
+            <param name="logger"></param>
+            <param name="authorizationClaimsProvider"></param>
+            <param name="languageTranslationHelper"></param>
+            <param name="userValidator"></param>
+            <param name="errorResponseHelper"></param>
+            <param name="userBrandMasterRepository"></param>
+            <param name="userTypeMasterRepository"></param>
+            <param name="databaseFunctions"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.UsersBO.UsersBO.GetUsersByBrand(System.Guid,System.Guid)">
+            <summary>
+            Get user data listing
+            </summary>
+            <param name="query">Query parameters for user data filter</param>
+            <returns>Returns list of users.</returns>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.UsersBO.UsersBO.GetCustomUserListing">
+            <summary>
+            Get user data listing
+            </summary>
+            <param name="query">Query parameters for user data filter</param>
+            <returns>Returns list of users.</returns>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.SoraBO.SoraBo.#ctor(Microsoft.Extensions.Logging.ILogger{TemplateApiService.BusinessObject.SoraBO.SoraBo},TemplateApiService.Common.RestClient.ErrorResponseHelper,TemplateApiService.Common.RedisDbClient.LanguageTranslationHelper,TemplateApiService.Common.Security.AuthorizationClaimsProvider,TemplateApiService.BusinessObject.UsersBO.UsersBO,TemplateApiService.Common.User.UserClient,TemplateApiService.Common.Operation.OperationClient)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.BusinessObject.SoraBO.SoraBo.GetSoraData">
+            <summary>
+            Get user data listing
+            </summary>
+            <param name="query">Query parameters for user data filter</param>
+            <returns>Returns list of users.</returns>
+        </member>
+        <member name="M:TemplateApiService.Common.Authenticate.HasScope.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for the HasScope class.
+            </summary>
+            <param name="issuer"></param>
+            <param name="scopes"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.Authenticate.HasScope.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,TemplateApiService.Common.Authenticate.HasScope)">
+            <summary>
+            To handel the token claims.
+            </summary>
+            <param name="context"></param>
+            <param name="requirement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.Converters.TypeConverter.Configure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightCategory.OPEN">
+            <summary>
+            OPEN
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightCategory.SPECIFIC">
+            <summary>
+            SPECIFIC
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightCategory.CERTIFIED">
+            <summary>
+            CERTIFIED
+            </summary>
+        </member>
+        <member name="T:TemplateApiService.Common.Enums.EnumFlightRule">
+            <summary>
+            EnumFlightRule
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightRule.VLOS">
+            <summary>
+            VLOS
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightRule.BVLOS">
+            <summary>
+            BVLOS
+            </summary>
+        </member>
+        <member name="T:TemplateApiService.Common.Enums.EnumFlightType">
+            <summary>
+            EnumFlightType
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.SPECIAL_OPERATIONS">
+            <summary>
+            SPECIAL_OPERATIONS
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.CARGO_OPERATIONS">
+            <summary>
+            CARGO_OPERATIONS
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.UNMANNED_WITH_PEOPLE">
+            <summary>
+            UNMANNED_WITH_PEOPLE
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.OTHERS">
+            <summary>
+            OTHERS
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.AIRSPACE_SIMULATION">
+            <summary>
+            AIRSPACE_SIMULATION
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.FLIGHT_SIMULATION">
+            <summary>
+            FLIGHT_SIMULATION
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumFlightType.LIVE_FLIGHT">
+            <summary>
+            LIVE_FLIGHT
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.no_data_found">
+            <summary>
+            no_data_found
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.primary_key_value_not_required">
+            <summary>
+            primary_key_value_not_required
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.primary_key_value_required">
+            <summary>
+            primary_key_value_not_required
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.internal_error">
+            <summary>
+            internal_error
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.invalid_user_role">
+            <summary>
+            invalid_user_role
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.invalid_route_param_id">
+            <summary>
+            invalid_route_param_id
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.required_ansp_id">
+            <summary>
+            required_ansp_id
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.required_user_id">
+            <summary>
+            required_user_id
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.invalid_ansp_id">
+            <summary>
+            invalid_ansp_id
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.invalid_user_id">
+            <summary>
+            invalid_user_id
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.http_status_code_401">
+            <summary>
+            http_status_code_401
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.http_status_code_403">
+            <summary>
+            http_status_code_403
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.http_status_code_429">
+            <summary>
+            http_status_code_429
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.http_status_code_500">
+            <summary>
+            http_status_code_500
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumGenericLanguageResources.no_user_found">
+            <summary>
+            no_user_found
+            </summary>
+        </member>
+        <member name="T:TemplateApiService.Common.Enums.EnumHttpStatusCode">
+            <summary>
+            EnumHttpStatusCode
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumHttpStatusCode.success">
+            <summary>
+            success
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumHttpStatusCode.fail">
+            <summary>
+            fail
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumHttpStatusCode.error">
+            <summary>
+            error
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationCategory.AREA_BASED">
+            <summary>
+            AREA_BASED
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationCategory.POLY_GRID">
+            <summary>
+            POLY_GRID
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationCategory.LINE_STRING">
+            <summary>
+            LINE_STRING
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationCategory.DELIVERY">
+            <summary>
+            DELIVERY
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Planning">
+            <summary>
+            Planning
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Conflicted">
+            <summary>
+            Conflicted
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.ReadyForApproval">
+            <summary>
+            ReadyForApproval
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Accepted">
+            <summary>
+            Accepted
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Activated">
+            <summary>
+            Activated
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.NonConforming">
+            <summary>
+            NonConforming
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Contingent">
+            <summary>
+            Contingent
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Ended">
+            <summary>
+            Ended
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Rescinded">
+            <summary>
+            Rescinded
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Canceled">
+            <summary>
+            Canceled
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Denied">
+            <summary>
+            Denied
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationState.Invalid">
+            <summary>
+            Pending
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationType.UNDEFINED">
+            <summary>
+            UNDEFINED
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationType.AA">
+            <summary>
+            AA
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationType.FCATC">
+            <summary>
+            FCATC
+            </summary>
+        </member>
+        <member name="F:TemplateApiService.Common.Enums.EnumOperationType.FCEXT">
+            <summary>
+            FCEXT
+            </summary>
+        </member>
+        <member name="T:TemplateApiService.Common.Extensions.ApiRestResponseExtension">
+            <summary>
+            ApiRestResponse Extension Class
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.Extensions.ApiRestResponseExtension.ToApiRestResponseResult(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            ApiRestResponse Extension Method 
+            </summary>
+            <param name="httpResponseMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.Extensions.ApiRestResponseExtension.ToApiRestResponseResult(Jal.HttpClient.Model.HttpResponse)">
+            <summary>
+            ApiRestResponse Extension Method 
+            </summary>
+            <param name="httpResponseMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.Extensions.ApiRestResponseExtension.ToObjectResult(TemplateApiService.Common.RestClient.ApiRestResponseResult)">
+            <summary>
+            ApiRestResponse Extension Method
+            </summary>
+            <param name="apiRestResponseResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.OAuth.OAuthClient.#ctor(TemplateApiService.Common.TemplateConfiguration,TemplateApiService.Common.Security.JwsHelper,Microsoft.Extensions.Logging.ILogger{System.String},System.String[],System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"></param>
+            <param name="jwsHelper"></param>
+            <param name="logger"></param>
+            <param name="scopes"></param>
+            <param name="clientId"></param>
+            <param name="audience"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.OAuth.OAuthClient.GetAuthenticationToken(System.String)">
+            <summary>
+            Get the token from the OAuth server.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.OAuth.OAuthClient.RetriveGoogleToken">
+            <summary>
+            Retrive the google token for requesting the oAuth token from Cpc Auth server.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TemplateApiService.Common.OAuth.OAuthClient.Token">
+            <summary>
+            Checks the expiration and return a new token if it has expired.
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.OAuth.OAuthTokenProvider.#ctor(TemplateApiService.Common.TemplateConfiguration,Microsoft.Extensions.Logging.ILogger{System.String},TemplateApiService.Common.Security.JwsHelper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"></param>
+            <param name="logger"></param>
+            <param name="jwsHelper"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.OAuth.OAuthTokenProvider.GetToken(System.String,System.String)">
+            <summary>
+            Returns the token.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TemplateApiService.Common.Operation.OperationClient">
+            <summary>
+            Operation Service
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.Operation.OperationClient.#ctor(TemplateApiService.Common.TemplateConfiguration,TemplateApiService.Common.OAuth.OAuthTokenProvider,Microsoft.Extensions.Logging.ILogger{TemplateApiService.Common.Operation.OperationClient},System.Net.Http.IHttpClientFactory)">
+            <summary>
+            constructor
+            </summary>
+            <param name="configuration"></param>
+            <param name="oauthToken"></param>
+            <param name="logger"></param>
+            <param name="clientFactory"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.Operation.OperationClient.GetOperationsAsync">
+            <summary>
+            Get Operations by control area.
+            </summary>
+            <param name="controlAreaId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.OperationId">
+            <summary>
+            UUID of the operation. Validated as UUID version 4 specification.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.ControlAreaId">
+            <summary>
+            UUID of the controlled zone where the operation is created.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.AnspId">
+            <summary>
+            Unique Id of the ANSP.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.UserId">
+            <summary>
+            Unique Id of the User creating the Operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.OrganizationId">
+            <summary>
+            Unique Id of the Organization creating the Operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.OperationType">
+            <summary>
+            The category of operation like AREA_BASED, POLY_GRID, LINE_STRING, DELIVERY.  
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.IsControlledZone">
+            <summary>
+            This will specify if the operation is created within the controlled zone or outside the controlled zone.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.AirspaceClassCodes">
+            <summary>
+            The list of Airspace Class Codes. Allowed values: "B", "C", "D", "E" and "G". Required field if is_controlled_zone is true.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Facility">
+            <summary>
+            The unique identifier for the facility. Required field if is_controlled_zone is true.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Contact">
+            <summary>
+            The point of contact for operation related query. The poc will be a pilot.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.RegistrationNumber">
+            <summary>
+            The list of registration numbers for the UASs that will be operated during the operation. It's an aircraft identification details.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.ReferenceNumber">
+            <summary>
+            The unique identifier for the operation once it’s approved.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.FlightRules">
+            <summary>
+            Different Flight Rules. Example VLOS, BVLOS.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.FlightType">
+            <summary>
+            The type of flight like special operations, cargo operations etc.  
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.FlightCategory">
+            <summary>
+            The catrgory of flights like open, specific and certified.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.State">
+            <summary>
+            The current state of the operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Type">
+            <summary>
+            The type of the operation. Either it is auto approved or further coordination operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Version">
+            <summary>
+            Sequential version that the DSS increments every time the Operation changes. A USS may use this version to determine which Operation references have new details that must be retrieved.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Ovn">
+            <summary>
+            Opaque version number of this Operation. Populated only when the OperationReference is owned by the USS retrieving or providing it.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.UssBaseUrl">
+            <summary>
+            The base URL of a USS implementation that implements the parts of the USS-USS API necessary for providing the details of this Operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Owner">
+            <summary>
+            Created by the DSS based on creating client's ID (via access token). Used internal to the DSS for restricting mutation and deletion operations to owner. Used by USSs to reject Operation update notifications originating from a USS that does not own the Operation.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.FlightComments">
+            <summary>
+            Additional comments provided by the authorizing entity.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.AdditionalApprovalRequired">
+            <summary>
+            This flag will define if additional approval for an operation is required or not based on the geo zone property.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.WaypointsList">
+            <summary>
+            List of waypoints. This news field is for the mobile client use. 
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.SubscriptionId">
+            <summary>
+            Subscription Id
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.DssState">
+            <summary>
+            The current state of the operation in DSS.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Operation.OperationViewModel.Fri">
+            <summary>
+            Flight Run Identifier
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RedisDbClient.TranslateItem.SourceLanguageCode">
+            <summary>
+            Source Language Code
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RedisDbClient.TranslateItem.TargetLanguageCode">
+            <summary>
+            Target Language Code
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RedisDbClient.TranslateItem.Text">
+            <summary>
+            Message to translate
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:TemplateApiService.Common.RestClient.ApiResponseResult.ApiVersion" -->
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.Status">
+            <summary>
+            Gets or Sets HttpStatus
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.Data">
+            <summary>
+            Gets or Sets Success Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.Error">
+            <summary>
+            Gets or Sets Error Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.StatusCode">
+            <summary>
+            Gets or Sets Http Status Code
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.Content">
+            <summary>
+            Gets or Sets Http Response Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiResponseResult.IsSuccessStatusCode">
+            <summary>
+            Gets or Sets Http Response Success Flag
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.ApiVersion">
+            <summary>
+            Gets or Sets Api Version
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.Status">
+            <summary>
+            Gets or Sets HttpStatus
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.Data">
+            <summary>
+            Gets or Sets Success Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.Error">
+            <summary>
+            Gets or Sets Error Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.StatusCode">
+            <summary>
+            Gets or Sets Http Status Code
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.Content">
+            <summary>
+            Gets or Sets Http Response Content
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ApiRestResponseResult.IsSuccessStatusCode">
+            <summary>
+            Gets or Sets Http Response Success Flag
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.RestClient.ErrorResponseHelper.#ctor(TemplateApiService.Common.RedisDbClient.LanguageTranslationHelper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="languageTranslationHelper"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.RestClient.ErrorResponseHelper.GetErrorResult(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Get Error Result
+            </summary>
+            <param name="httpStatusCode"></param>
+            <param name="languageResourceName"></param>
+            <param name="isGeneric"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.ErrorViewModel.Message">
+            <summary>
+            Gets or Sets Message
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.RestClient.ErrorViewModel.#ctor(System.Collections.Generic.List{System.String})">
+            <summary>
+            constructor
+            </summary>
+            <param name="messages"></param>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.SuccessViewModel.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.RestClient.SuccessViewModel.Message">
+            <summary>
+            Gets or Sets Message
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Common.Security.JwsHelper.#ctor(TemplateApiService.Common.TemplateConfiguration,Microsoft.Extensions.Logging.ILogger{TemplateApiService.Common.Security.JwsHelper})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.Security.TokenValidation.GetPublicKey">
+            <summary>
+            Validating the token signature
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.#ctor(Microsoft.Extensions.Logging.ILogger{TemplateApiService.Common.SoraHttpClient.HttpClientHelper},TemplateApiService.Common.SoraHttpClient.HttpClientLogger)">
+            <summary>
+            FlightAuth Http client constructor.
+            </summary>
+            <param name="logger"></param>
+            <param name="httpClientLogger"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.Post``1(System.String,System.Object,System.String)">
+            <summary>
+            Post request.
+            </summary>
+            <param name="url"></param>
+            <param name="accessToken"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.Get``1(System.String,System.String)">
+            <summary>
+            Get Request
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="accessToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.GetAsync``1(System.String,System.String)">
+            <summary>
+            GET Async http request handler
+            </summary>
+            <param name="url"></param>
+            <param name="authorization"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.Deserialize(System.String,System.Type)">
+            <summary>
+            Deserialize the JSON string into a proper object.
+            </summary>
+            <param name="content">HTTP body (e.g. string, JSON).</param>
+            <param name="type">Object type.</param>
+            <returns>Object representation of the JSON string.</returns>
+        </member>
+        <member name="M:TemplateApiService.Common.SoraHttpClient.HttpClientHelper.ConvertType(System.Object,System.Type)">
+            <summary>
+            Dynamically cast the object into target type.
+            Ref: http://stackoverflow.com/questions/4925718/c-dynamic-runtime-cast
+            </summary>
+            <param name="source">Object to be casted</param>
+            <param name="dest">Target type</param>
+            <returns>Casted object</returns>
+        </member>
+        <member name="M:TemplateApiService.Common.User.UserClient.#ctor(TemplateApiService.Common.SoraHttpClient.HttpClientHelper,TemplateApiService.Common.TemplateConfiguration,TemplateApiService.Common.OAuth.OAuthTokenProvider)">
+            <summary>
+            UserClient Constructor.
+            </summary>
+            <param name="httpClient"></param>
+            <param name="configuration"></param>
+            <param name="oAuthToken"></param>
+        </member>
+        <member name="M:TemplateApiService.Common.User.UserClient.GetOrganizationsUsers">
+            <summary>
+            Get Organization's User information from the registration server
+            </summary>
+            <param name="organizationId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TemplateApiService.Common.Validation.ValidationError.Message">
+            <summary>
+            Gets or Sets Message
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Validation.ValidationResultModel.ApiVersion">
+            <summary>
+            Gets or Sets Api Version
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Validation.ValidationResultModel.Status">
+            <summary>
+            Gets or Sets HttpStatus
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.Common.Validation.ValidationResultModel.Errors">
+            <summary>
+            Gets or Sets Errors
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.#ctor(TemplateApiService.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.Add(TemplateApiService.Models.UserBrandMasters.UserBrandMaster)">
+            <summary>
+            Save user brand details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.Find(System.Guid)">
+            <summary>
+            Get user brand details
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.GetAll(System.String)">
+            <summary>
+            Get user brand's list
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.Remove(System.Guid)">
+            <summary>
+            Remove a user brand
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserBrandMasters.UserBrandMasterRepository.Update(TemplateApiService.Models.UserBrandMasters.UserBrandMaster)">
+            <summary>
+            Update user brand details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.#ctor(TemplateApiService.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.Add(TemplateApiService.Models.Users.User)">
+            <summary>
+            Save user details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.Find(System.Guid)">
+            <summary>
+            Get user details
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.GetAll(System.String)">
+            <summary>
+            Get user's list
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.Remove(System.Guid)">
+            <summary>
+            Remove a user
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.UserRepository.Update(TemplateApiService.Models.Users.User)">
+            <summary>
+            Update user details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.#ctor(TemplateApiService.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.Add(TemplateApiService.Models.Users.User)">
+            <summary>
+            Save user details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.Find(System.Guid)">
+            <summary>
+            Get user details
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.GetAll(System.String)">
+            <summary>
+            Get user's list
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.Remove(System.Guid)">
+            <summary>
+            Remove a user
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.Users.userRepository.Update(TemplateApiService.Models.Users.User)">
+            <summary>
+            Update user details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.#ctor(TemplateApiService.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.Add(TemplateApiService.Models.UserTypeMasters.UserTypeMaster)">
+            <summary>
+            Save user type details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.Find(System.Guid)">
+            <summary>
+            Get user type details
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.GetAll(System.String)">
+            <summary>
+            Get user type's list
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.Remove(System.Guid)">
+            <summary>
+            Remove a user type
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:TemplateApiService.Models.UserTypeMasters.UserTypeMasterRepository.Update(TemplateApiService.Models.UserTypeMasters.UserTypeMaster)">
+            <summary>
+            Update user type details
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Contact.ContactViewModel.PocUserId">
+            <summary>
+            Point of contact unique User Id.
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Contact.ContactViewModel.PocFirstName">
+            <summary>
+            Point of contact First Name
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Contact.ContactViewModel.PocLastName">
+            <summary>
+            Point of contact Last Name
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Contact.ContactViewModel.PocPhoneNumber">
+            <summary>
+            Point of contact Phone Number
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Contact.ContactViewModel.PocEmailAddress">
+            <summary>
+            Point of contact Email Address
+            </summary>
+        </member>
+        <member name="M:TemplateApiService.ViewModels.OAuth.OAuthTokenResponse.GetAuthorizationToken">
+            <summary>
+            Returns the Token with the Bearer type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TemplateApiService.ViewModels.Sora.SoraResponseModel">
+            <summary>
+            RID Response Model
+            </summary>
+        </member>
+        <member name="P:TemplateApiService.ViewModels.Sora.SoraResponseModel.Message">
+            <summary>
+            Gets or Sets Message
+            </summary>
+        </member>
+    </members>
+</doc>

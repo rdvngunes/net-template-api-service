@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+    environment {
+        DOTNETPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
+        ASPNETCORE_ENVIRONMENT = "Development"
+        WORKSPACE = "${WORKSPACE}"
+        SERVICE_FOLDER = "TemplateApiService"
+        CS_PROJECT = "${WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService/TemplateApiService.csproj"
+        CS_SOLUTION = "${WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService.sln"
+        SWAGGER_XML = "${WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService/TemplateApiService.xml"
+        APP_SETTINGS = "${WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService/appsettings.${env.ASPNETCORE_ENVIRONMENT}.json"
+        WEB_CONFIG = "${WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService/web.config"
+        BYPASS_WARNING = "-nowarn:NU1701;CS1591;CS1572;CS1573;CS0169;CS1998;CS4014;CS1570;CS1030;CS0168"
+    }
+    parameters {
+        //Jenkins jobs execution parameters
+        string(name: 'sshServer', defaultValue: 'ubuntu@52.56.86.169', description: 'Deployment Server (ubuntu@xx.xx.xx.xx)')
+        string(name: 'deploymentPath', defaultValue: '[[path]]', description: 'Absolution deployment file path in the server')
+        string(name: 'serviceName', defaultValue: 'dev-sora.service', description: 'Systemd service name (e.g. xxxxxxxxx.service')
+    }
+    stages {
+        stage("clean") {
+            steps {
+                echo "CLEAN EXECUTION STARTED"
+                sh "dotnet clean ${env.CS_PROJECT} -v minimal"
+            }
+        }
+        stage("build") {
+            steps {
+                echo "BUILD EXECUTION STARTED"
+                sh "dotnet build ${env.CS_PROJECT} -c Release"
+            }
+        }
+        stage("unit-test") {
+            steps {
+                echo "UNIT TEST EXECUTION STARTED"
+                echo "Not yet implemented"
+                //sh "dotnet test -c Release --no-build"
+            }
+        }
+        stage("functional-test") {
+            steps {
+                echo "FUNCTIONAL TEST EXECUTION STARTED"
+                echo "Not yet implemented"
+                //TODO
+            }
+        }
+        stage("publish") {
+            steps {
+                echo "PUBLISH EXECUTION STARTED"
+                sh "dotnet publish ${env.CS_PROJECT} --no-build -c Release"
+                sh "sed -i 's/Production/${ASPNETCORE_ENVIRONMENT}/g' ${WEB_CONFIG}"
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo "DEPLOY EXECUTION STARTED (SSH: ${params.sshServer})"
+                sshagent (credentials: ["Redwood"]) {
+                    //Stop the systemd service
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} sudo systemctl stop ${params.serviceName}"
+                    //Create folder if not exit
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} sudo rm -rf ${params.deploymentPath}"
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} mkdir -p ${params.deploymentPath}"
+                    //Copy program
+                    sh "rsync -a --exclude='appsettings*' ${env.WORKSPACE}/${env.SERVICE_FOLDER}/TemplateApiService/bin/Release/netcoreapp3.1/publish/ ${params.sshServer}:${params.deploymentPath}"
+                    //Copy swagger json
+                    sh "scp -o StrictHostKeyChecking=no ${env.SWAGGER_XML} ${params.sshServer}:${params.deploymentPath}"
+                    //Copy config
+                    sh "scp -o StrictHostKeyChecking=no ${env.APP_SETTINGS} ${params.sshServer}:${params.deploymentPath}"
+                    sh "scp -o StrictHostKeyChecking=no ${env.WEB_CONFIG} ${params.sshServer}:${params.deploymentPath}"
+                    //Chmod for service user
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} sudo chown -R ubuntu:www-data ${params.deploymentPath}"                    
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} sudo chmod -R 775 ${params.deploymentPath}"
+                    //Start the systemd service
+                    sh "ssh -o StrictHostKeyChecking=no -T ${params.sshServer} sudo systemctl start ${params.serviceName}"
+                }
+            }
+        }
+    }
+}
